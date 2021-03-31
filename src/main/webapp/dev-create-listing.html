@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>(DEVELOPMENT) Create Listing Form</title>
+  </head>
+  <body>
+    <div id="content">
+        <h1>Development Testing Page for Creating New Listings</h1>
+        <div id="create-listing">
+                <form method="POST" action="/new-listing-handler" id="new-listing-form">
+                    <label>
+                        Title:<br>
+                        <input type="text" name="title" value="">
+                    </label>
+                    <br>
+
+                    <label>
+                        Description:<br>
+                        <input type="text" name="description" value="">
+                    </label>
+                    <br>
+
+                    <label>
+                        Open spots:<br>
+                        <input type="number" name="capacity" value="2" min="2" max="10">
+                    </label>
+                    <br>
+                    <br>
+                    <input type="submit" />
+                </form>
+        </div>
+    </div>
+  </body>
+</html>
