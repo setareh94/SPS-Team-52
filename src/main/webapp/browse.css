@@ -1,0 +1,159 @@
+:root {
+    --blue: #1a73e8;
+    --blue-background: #f6fafe;
+    --dark-gray: #5f6368;
+    --light-gray: #dadce0;
+    --gray-background: #f6f6f6;
+    --green: #0d9104;
+}
+
+#content {
+    font-family: Roboto, Helvetica Neue, sans-serif;;
+}
+
+/* Navigation Bar */
+#navbar {
+    height: 64px;
+    line-height: 64px;
+    display: flex;
+    flex-direction: row;
+}
+
+#navcorner {
+    height: 100%;
+    width: 60px;
+}
+
+#navlinks {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    height: 100%;
+    flex: 1;
+    text-align: right;
+}
+
+#navlinks a {
+    padding-left: 24px;
+    padding-right: 24px;
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: .1px;
+    height: 100%;
+}
+
+.navlink :hover {
+    background-color: var(--blue-background);
+    border-bottom: var(--blue) 2px;
+}
+
+
+/* Category Title */
+#category-title {
+    text-align: center;
+    font-size: 42px;
+    color: var(--dark-gray);
+}
+
+
+/* Filter & Search Bar */
+#toolbar {
+    border-color: var(--light-gray);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px 20px;
+}
+
+
+/* Listings */
+#listing-counter {
+    padding-bottom: 5px;
+    color: var(--dark-gray);
+    font-size: 15px;
+}
+
+#listings {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.listing {
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--light-gray);
+    padding: 10px;
+    color: var(--dark-gray);
+}
+
+.listing-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.listing-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.listing-age {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    flex: 1;
+    text-align: right;
+    font-size: 12px;
+}
+
+.listing-subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 10px;
+}
+
+.listing-description {
+    padding-bottom: 10px;
+}
+
+.listing-capacity {
+    font-size: 23px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.listing-sub-description {
+    padding-bottom: 10px;
+}
+
+.listing-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listing-buttons button {
+    padding: 0 24px;
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .25px;
+    line-height: 36px;
+    border: none;
+    border-radius: 4px;
+}
+
+.listing-button-detail {
+    background: var(--light-gray);
+    color: var(--dark-gray);
+}
+
+.listing-button-join {
+    background: var(--blue);
+    color: white;
+}
