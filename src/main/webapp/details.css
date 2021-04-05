@@ -1,0 +1,38 @@
+@import url(browse.css);
+
+body {
+    padding: 0 3%;
+}
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#listing-title {
+  font-size: 42px;
+  color: var(--dark-gray);
+  font-weight: normal;
+}
+
+.listing-info {
+    line-height: 0.2;
+    color: var(--dark-gray);
+}
+
+.user-info {
+    font-weight: normal;
+    color: var(--dark-gray);
+    font-size: 18px;
+    text-align: right;
+    width: 15%;
+}
+
+.user-icon {
+    max-width: 25%;
+    height: auto;
+}
+
+.user-status {
+    color: green;
+}
