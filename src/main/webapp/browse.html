@@ -10,7 +10,7 @@
 <div id="content">
     <div id="navbar">
         <div id="navcorner"></div>
-        <div id="navlogo"><b>SPS</b> Meeting App Name</div>
+        <div id="navlogo"><b>SPS</b> Listing Buddy</div>
         <div id="navlinks">
             <div class="navlink"><a href="">Browse Listings</a></div>
             <div class="navlink"><a href="">About</a></div>
@@ -21,13 +21,46 @@
     </div>
     <hr>
 
-    <div id="category-title">Listing Category Title</div>
+    <div id="category-title">General Listings</div>
 
     <div id="toolbar">
         Searchbar & Filter placeholder
     </div>
 
+    Create a new listing
+    <div id="create-listing">
+                <form method="POST" action="/new-listing-handler" id="new-listing-form">
+                    <label>
+                        Your name:<br>
+                        <input type="text" name="author" value="">
+                    </label>
+                    <br>
+
+                    <label>
+                        Title:<br>
+                        <input type="text" name="title" value="">
+                    </label>
+                    <br>
+
+                    <label>
+                        Description:<br>
+                        <input type="text" name="description" value="">
+                    </label>
+                    <br>
+
+                    <label>
+                        Open spots:<br>
+                        <input type="number" name="capacity" value="2" min="2" max="10">
+                    </label>
+                    <br>
+                    <br>
+                    <input type="submit" />
+                </form>
+    </div>
+    <br>
     <div id="listing-counter">5 of 5 listings</div>
+    <button onclick="updateListings()">Refresh listings</button>
+    <br>
     <div id="listings">
         <div class="listing">
             <div class="listing-header">

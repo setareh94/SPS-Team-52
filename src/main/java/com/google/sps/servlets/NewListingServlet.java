@@ -5,7 +5,10 @@ import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Value;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +23,7 @@ public class NewListingServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String title = Jsoup.clean(request.getParameter("title"), Whitelist.none());
     String description = Jsoup.clean(request.getParameter("description"), Whitelist.none());
+    String author = Jsoup.clean(request.getParameter("author"), Whitelist.none());
     int capacity = 0;
     long timestamp = System.currentTimeMillis();
 
@@ -36,7 +40,8 @@ public class NewListingServlet extends HttpServlet {
     System.out.println("title: " + title);
     System.out.println("description: " + description);
     System.out.println("capacity: " + capacity);
-    System.out.println("timestamp: " + capacity);
+    System.out.println("timestamp: " + timestamp);
+    System.out.println("author: " + author);
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Listing");
@@ -46,9 +51,11 @@ public class NewListingServlet extends HttpServlet {
             .set("description", description)
             .set("capacity", capacity)
             .set("timestamp", timestamp)
+            .set("author", author)
+            .set("users", new ArrayList<Value<String>>())
             .build();
     datastore.put(listingEntity);
 
-    response.sendRedirect("/index.html");
+    response.sendRedirect("/browse.html");
     }
 }
