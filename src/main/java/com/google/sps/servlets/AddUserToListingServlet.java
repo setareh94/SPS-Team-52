@@ -72,11 +72,21 @@ public class AddUserToListingServlet extends HttpServlet {
     }
     
     Entity targetListing = results.next();
-    System.out.println("Current array: " + targetListing.getList("users"));
+    long currentCapacity = targetListing.getLong("capacity");
+    if(currentCapacity <= 0){
+        System.out.println(userID + " tried to join listing #" + listingID + " but the listing was already full.");
+        return;
+    }
+
+    //System.out.println("Current array: " + targetListing.getList("users"));
     var updatedList = new ArrayList(targetListing.getList("users"));
     StringValue newUser = new StringValue(userID);
     updatedList.add(newUser);
-    Entity newListing = Entity.newBuilder(targetListing).set("users", updatedList).build();
+    Entity newListing = Entity.newBuilder(targetListing)
+        .set("users", updatedList)
+        .set("capacity", currentCapacity-1)
+        .build();
+
     datastore.update(newListing);
   }
 }
