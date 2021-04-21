@@ -24,13 +24,6 @@ import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.cloud.datastore.Value;
-//import com.google.cloud.datastore.Query.*;
-// import com.google.cloud.datastore.Query.Filter;
-// import com.google.cloud.datastore.Query.FilterOperator;
-// import com.google.cloud.datastore.Query.FilterPredicate;
-// import com.google.cloud.datastore.Filter;
-// import com.google.cloud.datastore.FilterOperator;
-// import com.google.cloud.datastore.FilterPredicate;
 import com.google.cloud.datastore.StructuredQuery.*;
 import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.StringValue;
@@ -63,12 +56,6 @@ public class AddUserToListingServlet extends HttpServlet {
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
 
-    // Filter listingIDFilter = new FilterPredicate("id", FilterOperator.EQUAL, request.getParameter("listingID"));
-    // Query q = new Query("Listing").setFilter(listingIDFilter).build();
-    // QueryResults<Entity> results = datastore.run(query);
-    // if(results.size() == 0)
-    //     return;
-
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Listing");
     Key listingKey = keyFactory.newKey(Long.valueOf(listingID));
     System.out.println("Searching for listing with key matching: " + listingKey.getId());
@@ -84,14 +71,12 @@ public class AddUserToListingServlet extends HttpServlet {
         return;
     }
     
-    // Value userVal = StringValue.of(userID);
-    // Entity targetListing = results.next();
-    // System.out.println("Current array: " + targetListing.getList("users"));
-    // ArrayList<Value<String>> updatedList = new ArrayList<Value<String>>(targetListing.getList("users"));
-    // Map<String, ArrayList<Value<String>>> propertyUpdate = new HashMap<>();
-    // propertyUpdate.put("users", updatedList);
-    // targetListing.setProperties(updatedList);
-    // //targetListing.getList("users").add(userVal);
-    // datastore.update(targetListing);
+    Entity targetListing = results.next();
+    System.out.println("Current array: " + targetListing.getList("users"));
+    var updatedList = new ArrayList(targetListing.getList("users"));
+    StringValue newUser = new StringValue(userID);
+    updatedList.add(newUser);
+    Entity newListing = Entity.newBuilder(targetListing).set("users", updatedList).build();
+    datastore.update(newListing);
   }
 }
