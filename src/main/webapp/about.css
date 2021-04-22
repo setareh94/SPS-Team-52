@@ -1,0 +1,73 @@
+@import url(browse.css);
+
+/* About Page */
+
+body {
+  line-height: 1.5;
+  font-weight: normal;
+}
+
+/* Page Title */
+#about-title {
+  text-align: center;
+  font-size: 42px;
+  color: var(--dark-gray);
+  font-weight: normal;
+}
+
+/* About Section */
+.about-content {
+  margin: auto;
+  width: 45%;
+}
+
+/* Meet the Team */
+#team-title {
+  text-align: center;
+  font-size: 28px;
+  color: var(--dark-gray);
+  font-weight: normal;
+  margin-top: 5rem;
+}
+
+.member-row {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 45%;
+  margin-top: 4rem;
+}
+
+.member-col {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+}
+
+.member-col-img {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  text-align: right;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.member-name {
+  color: var(--dark-gray);
+  font-size: 18px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.member-bio {
+  margin-top: 4px;
+}
+
+.member-img {
+  width: 50%;
+}
