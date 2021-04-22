@@ -1,4 +1,4 @@
-function generateListing(id, title, timestamp, author, description, capacity, subDescription) {
+function generateListing(id, title, timestamp, author, description, capacity, subDescription, participants) {
     let listing = "  <div class=\"listing-header\">\n" +
         "                <div class=\"listing-title\">%TITLE%</div>\n" +
         "                <div class=\"listing-age\">%AGE%</div>\n" +
@@ -6,6 +6,10 @@ function generateListing(id, title, timestamp, author, description, capacity, su
         "            <div class=\"listing-subtitle\">created by %AUTHOR%</div>\n" +
         "            <div class=\"listing-description\">%DESC%</div>\n" +
         "            <div class=\"listing-capacity\">%CAPACITY% spot%CAP-MULT% open</div>\n" +
+        "            <div class=\"listing-users\">\n" +
+        "                <span class=\"listing-users-title\">Current Participants:</span>\n" +
+        "                <span class=\"listing-users-list\">%PARTICIPANTS%</span>\n" +
+        "            </div>\n" +
         "            <div class=\"listing-sub-description\">%SUB-DESC%</div>\n" +
         "            <div class=\"listing-buttons\">\n" +
         "                <button class=\"listing-button-detail\">See details</button>\n" +
@@ -16,8 +20,9 @@ function generateListing(id, title, timestamp, author, description, capacity, su
         .replace("%AGE%", timeSince(new Date(timestamp)))
         .replace("%AUTHOR%", author)
         .replace("%DESC%", description)
-        .replace("%CAPACITY%", capacity)
-        .replace("%CAP-MULT%", "(s)"/*(capacity==="0" || capacity==="1" ? "s" : "")*/)
+        .replace("%CAPACITY%", capacity === 0 ? "No" : capacity)
+        .replace("%CAP-MULT%", capacity === 1 ? "" : "s"/*"(s)"/*(capacity==="0" || capacity==="1" ? "s" : "")*/)
+        .replace("%PARTICIPANTS%", participants.join(", "))
         .replace("%SUB-DESC%", subDescription);
 
     let div = document.createElement('div');
@@ -26,6 +31,10 @@ function generateListing(id, title, timestamp, author, description, capacity, su
     div.getElementsByClassName("listing-button-join")[0].addEventListener('click', () => {
         joinListing(id);
     });
+
+    if(capacity === 0){
+        div.getElementsByClassName("listing-button-join")[0].setAttribute("disabled", "disabled");
+    }
 
     return div;
 }
@@ -41,7 +50,7 @@ async function updateListings() {
             //let div = document.createElement('div');
             //div.innerHTML = generateListing(listing["title"], listing["timestamp"], "TMP-AUTHOR", listing["description"], "0", "TMP-SUBDESC");
             //listings.appendChild(div);
-            listings.appendChild(generateListing(listing["id"], listing["title"], listing["timestamp"], listing["author"], listing["description"], listing["capacity"], "1600 Amphitheatre Parkway Mountain View, CA 94043"));
+            listings.appendChild(generateListing(listing["id"], listing["title"], listing["timestamp"], listing["author"], listing["description"], listing["capacity"], "1600 Amphitheatre Parkway Mountain View, CA 94043", listing["users"]));
             ++listingCount;
             //taskListElement.appendChild(createTaskElement(listing));
         })

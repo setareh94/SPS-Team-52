@@ -47,8 +47,10 @@ public class AddUserToListingServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String listingID = request.getParameter("listingID");
     String userID = request.getParameter("userID");
+    String referer = request.getHeader("Referer");
     if(listingID == null || userID == null){
         System.out.println("ERROR: Malformed user add request. Missing listingID/userID. Got: userID=" + userID + ", listingID=" + listingID);
+        response.sendRedirect(referer);
         return;
     }
 
@@ -68,6 +70,7 @@ public class AddUserToListingServlet extends HttpServlet {
     QueryResults<Entity> results = datastore.run(query);
     if(!results.hasNext()){
         System.out.println("No results found in listing database.");
+        response.sendRedirect(referer);
         return;
     }
     
@@ -75,6 +78,7 @@ public class AddUserToListingServlet extends HttpServlet {
     long currentCapacity = targetListing.getLong("capacity");
     if(currentCapacity <= 0){
         System.out.println(userID + " tried to join listing #" + listingID + " but the listing was already full.");
+        response.sendRedirect(referer);
         return;
     }
 
@@ -88,5 +92,7 @@ public class AddUserToListingServlet extends HttpServlet {
         .build();
 
     datastore.update(newListing);
+
+    response.sendRedirect(referer);
   }
 }

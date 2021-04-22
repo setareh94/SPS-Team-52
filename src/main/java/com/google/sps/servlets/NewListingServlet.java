@@ -6,6 +6,7 @@ import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.Value;
+import com.google.cloud.datastore.StringValue;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ public class NewListingServlet extends HttpServlet {
     int capacity = 0;
     long timestamp = System.currentTimeMillis();
 
+    String referer = request.getHeader("Referer");
+
     try {
         capacity = Integer.parseInt(Jsoup.clean(request.getParameter("capacity"), Whitelist.none()));
     }
@@ -45,6 +48,9 @@ public class NewListingServlet extends HttpServlet {
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Listing");
+    ArrayList<Value<String>> userList = new ArrayList<Value<String>>();
+    StringValue newUser = new StringValue(author);
+    userList.add(newUser);
     FullEntity listingEntity =
         Entity.newBuilder(keyFactory.newKey())
             .set("title", title)
@@ -52,10 +58,10 @@ public class NewListingServlet extends HttpServlet {
             .set("capacity", capacity)
             .set("timestamp", timestamp)
             .set("author", author)
-            .set("users", new ArrayList<Value<String>>())
+            .set("users", userList)
             .build();
     datastore.put(listingEntity);
 
-    response.sendRedirect("/browse.html");
+    response.sendRedirect(referer);
     }
 }
