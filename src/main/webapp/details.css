@@ -1,0 +1,79 @@
+@import url(browse.css);
+
+body {
+    padding: 0 3%;
+    color: var(--dark-gray);
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#listing-title {
+  font-size: 42px;
+  font-weight: bold;
+}
+ 
+.listing-info {
+    line-height: 0.2;
+}
+
+.user-info {
+    font-weight: normal;
+    font-size: 18px;
+    text-align: right;
+    width: 15%;
+}
+
+.user-icon {
+    max-width: 25%;
+    height: auto;
+}
+
+.user-status {
+    color: green;
+}
+
+/* Description */
+.listing-details{
+    margin-top: 3rem;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.description-col {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    width: 55%;
+}
+.listing-desc{
+    color: black;
+}
+
+.location-col {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    align-items: flex-end;
+}
+.map-img {
+    max-width: 60%;
+}
+
+.participants {
+    font-size: 28px;
+    margin-top: 2rem;
+}
+
+#participant-list {
+    margin-top: 0;
+    font-size: 22px;
+}

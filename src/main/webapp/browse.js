@@ -12,7 +12,7 @@ function generateListing(id, title, timestamp, author, description, capacity, su
         "            </div>\n" +
         "            <div class=\"listing-sub-description\">%SUB-DESC%</div>\n" +
         "            <div class=\"listing-buttons\">\n" +
-        "                <button class=\"listing-button-detail\">See details</button>\n" +
+        "                <button class=\"listing-button-detail\"><a href=\"details.html\">See details</a></button>\n" +
         "                <button class=\"listing-button-join\">Join</button>\n" +
         "            </div>";
     
