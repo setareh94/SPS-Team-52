@@ -6,99 +6,61 @@
     <link rel="stylesheet" href="browse.css">
     <script src="browse.js"></script>
 </head>
-<body>
+<body onload="updateListings()">
 <div id="content">
     <div id="navbar">
         <div id="navcorner"></div>
-        <div id="navlogo"><b>SPS</b> Meeting App Name</div>
+        <div id="navlogo"><b>SPS</b> Listing Buddy</div>
         <div id="navlinks">
             <div class="navlink"><a href="">Browse Listings</a></div>
             <div class="navlink"><a href="">About</a></div>
             <div class="navlink"><a href="">Account</a></div>
-<!--            <a href="">About</a>-->
-<!--            <a href="">Account</a>-->
         </div>
     </div>
     <hr>
 
-    <div id="category-title">Listing Category Title</div>
+    <div id="category-title">General Listings</div>
 
     <div id="toolbar">
-        Searchbar & Filter placeholder
+        Search listings...
     </div>
 
+    
+    <div id="create-listing-title">Create a new listing</div>
+    <div id="create-listing">
+        <form method="POST" action="/new-listing-handler" id="new-listing-form">
+            <div id="create-listing-inputs">
+            <label>
+                Your name:
+                <input type="text" name="author" value="">
+            </label>
+
+            <label>
+                Title:
+                <input type="text" name="title" value="">
+            </label>
+
+            <label>
+                Description:
+                <input type="text" name="description" value="">
+            </label>
+
+            <label>
+                Additional capacity:
+                <input type="number" name="capacity" value="2" min="2" max="10">
+            </label>
+            </div>
+
+            <input type="submit" />
+        </form>
+    </div>
+    <br>
+
     <div id="listing-counter">5 of 5 listings</div>
+    <button onclick="updateListings()">Refresh listings</button>
+    <br>
     <div id="listings">
-        <div class="listing">
-            <div class="listing-header">
-                <div class="listing-title">Listing Title</div>
-                <div class="listing-age">20 seconds ago</div>
-            </div>
-            <div class="listing-subtitle">created by Author</div>
-            <div class="listing-description">Short listing description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed ipsum et tellus dapibus vestibulum. Sed cursus tempor ultrices. Donec volutpat metus sed risus venenatis, euismod viverra elit varius.</div>
-            <div class="listing-capacity">0 spots open</div>
-            <div class="listing-sub-description">Location or other meeting details depending on the category</div>
-            <div class="listing-buttons">
-                <button class="listing-button-detail">See details</button>
-                <button class="listing-button-join">Join</button>
-            </div>
-        </div>
-        <div class="listing">
-            <div class="listing-header">
-                <div class="listing-title">Listing Title</div>
-                <div class="listing-age">20 seconds ago</div>
-            </div>
-            <div class="listing-subtitle">created by Author</div>
-            <div class="listing-description">Short listing description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed ipsum et tellus dapibus vestibulum. Sed cursus tempor ultrices. Donec volutpat metus sed risus venenatis, euismod viverra elit varius.</div>
-            <div class="listing-capacity">0 spots open</div>
-            <div class="listing-sub-description">Location or other meeting details depending on the category</div>
-            <div class="listing-buttons">
-                <button class="listing-button-detail">See details</button>
-                <button class="listing-button-join">Join</button>
-            </div>
-        </div>
-        <div class="listing">
-            <div class="listing-header">
-                <div class="listing-title">Listing Title</div>
-                <div class="listing-age">20 seconds ago</div>
-            </div>
-            <div class="listing-subtitle">created by Author</div>
-            <div class="listing-description">Short listing description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed ipsum et tellus dapibus vestibulum. Sed cursus tempor ultrices. Donec volutpat metus sed risus venenatis, euismod viverra elit varius.</div>
-            <div class="listing-capacity">0 spots open</div>
-            <div class="listing-sub-description">Location or other meeting details depending on the category</div>
-            <div class="listing-buttons">
-                <button class="listing-button-detail">See details</button>
-                <button class="listing-button-join">Join</button>
-            </div>
-        </div>
-        <div class="listing">
-            <div class="listing-header">
-                <div class="listing-title">Listing Title</div>
-                <div class="listing-age">20 seconds ago</div>
-            </div>
-            <div class="listing-subtitle">created by Author</div>
-            <div class="listing-description">Short listing description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed ipsum et tellus dapibus vestibulum. Sed cursus tempor ultrices. Donec volutpat metus sed risus venenatis, euismod viverra elit varius.</div>
-            <div class="listing-capacity">0 spots open</div>
-            <div class="listing-sub-description">Location or other meeting details depending on the category</div>
-            <div class="listing-buttons">
-                <button class="listing-button-detail">See details</button>
-                <button class="listing-button-join">Join</button>
-            </div>
-        </div>
-        <div class="listing">
-            <div class="listing-header">
-                <div class="listing-title">Listing Title</div>
-                <div class="listing-age">20 seconds ago</div>
-            </div>
-            <div class="listing-subtitle">created by Author</div>
-            <div class="listing-description">Short listing description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed ipsum et tellus dapibus vestibulum. Sed cursus tempor ultrices. Donec volutpat metus sed risus venenatis, euismod viverra elit varius.</div>
-            <div class="listing-capacity">0 spots open</div>
-            <div class="listing-sub-description">Location or other meeting details depending on the category</div>
-            <div class="listing-buttons">
-                <button class="listing-button-detail">See details</button>
-                <button class="listing-button-join">Join</button>
-            </div>
-        </div>
+        
     </div>
 </div>
 </body>

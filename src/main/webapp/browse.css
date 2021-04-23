@@ -157,3 +157,42 @@
     background: var(--blue);
     color: white;
 }
+
+.listing-users-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.listing-users {
+    padding-bottom: 10px;
+}
+
+button:disabled {
+    background: var(--light-gray);
+    color: var(--dark-gray);
+}
+
+button:disabled:hover {
+    cursor: not-allowed;
+}
+
+
+/* Create listing form */
+#create-listing-inputs {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-bottom: 6px;
+}
+
+#create-listing label {
+    white-space: nowrap;
+    padding-right: 15px;
+}
+
+#create-listing-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--dark-gray);
+}
