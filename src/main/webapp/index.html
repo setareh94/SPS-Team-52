@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Team 52 Project</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>SPS Spring 2021 Team 52 Project</h1>
-      <p>Project base.</p>
-      <p><a href="browse.html">Click here to go to the listing page prototype!</a></p>
+    <title>Listing Buddy</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body onload="setNameInputFocus()">
+<div id="content">
+    <div id="centered-content">
+        <div id="heading">
+            <div id="title">Listing Buddy</div>
+            <div id="sub-title">meet new people with ease</div>
+        </div>
+        <div id="home-inputs">
+            <input id="username-input" placeholder="Enter your name to begin" type="text" />
+            <div id="view-listings-button-wrapper">
+                <button id="view-listings-button" onclick="sendToBrowse()">Let's go</button>
+            </div>
+        </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
